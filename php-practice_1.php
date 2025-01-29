@@ -3,6 +3,7 @@
 $name = "「八島」";
 $message = "私の名前は" . $name . "です。";
 echo $message;
+
 // $message = "私の名前は{$name}です"
 
 // Q2 四則演算
@@ -14,20 +15,18 @@ echo "$num\n$numb";
 $timestamp = strtotime("2019-05-23 14:48:22");
 echo "現時刻は、" . date("Y年m月d日 H時i分s秒", $timestamp) . "です。";
 
+// var_dumpする（宿題）
+
 
 // Q4 条件分岐-1 if文
-$device = 'mac' or 'windows';
-if ($device == 'mac') {
-    $message = "使用OSは、macです。";
+$device = 'mac';
+// bool
+if ($device == 'mac' || 'windows') {
+    $message = "使用OSは、{$device}です。";
 } else  {
-    if ($device == 'windows')
-    $message = '使用OSは、windowsです。';
-    else {
-        $message = 'どちらでもありません。';
-        
-    }
-    
+    $message = "どちらでもありません。";
 }
+
 echo $message;
 
 // Q5 条件分岐-2 三項演算子
@@ -65,39 +64,55 @@ $region = [
 ];
 
 foreach ($region as $pref => $cap) {
+    //  break;
     if ($pref == '埼玉県') {
+        //  break;
+        // echo "saitama";
         echo "{$pref}の県庁所在地は、{$cap}です。";
+        break;
     }
+    //  break;
 }
 
 // Q9 連想配列-3
 $region = [
-  '東京都' => '新宿区',
-  '神奈川県' => '横浜市',
-  '千葉県' => '千葉市',
-  '埼玉県' => 'さいたま市',
-  '栃木県' => '宇都宮市',
-  '群馬県' => '前橋市',
-  '茨城県' => '水戸市',
-  '石川県' => '金沢市',
-  '宮城県' => '仙台市'
-];
-
-foreach ($region as $pref => $cap) {
-    if ($pref == '東京都' || $pref =='神奈川県' || $pref =='千葉県' || $pref =='埼玉県' || $pref == '栃木県' || $pref == '群馬県' || $pref == '茨城県') {
-        echo "{$pref}の県庁所在地は、{$cap}です。\n";
- }
- else {
-     echo "{$pref}は関東地方ではありません。\n";
- }
+    '東京都' => '新宿区',
+    '神奈川県' => '横浜市',
+    '千葉県' => '千葉市',
+    '埼玉県' => 'さいたま市',
+    '栃木県' => '宇都宮市',
+    '群馬県' => '前橋市',
+    '茨城県' => '水戸市',
+    '石川県' => '金沢市',
+    '宮城県' => '仙台市'
+  ];
+  
+$kanto = [
+    '東京都' => '新宿区',
+    '神奈川県' => '横浜市',
+    '千葉県' => '千葉市',
+    '埼玉県' => 'さいたま市',
+    '栃木県' => '宇都宮市',
+    '群馬県' => '前橋市',
+    '茨城県' => '水戸市',
+      ];
+  
+  foreach ($region as $pref => $cap) {
+      if (in_array($pref, $kanto)) {
+          echo "{$pref}の県庁所在地は、{$cap}です。\n";
+   }
+   else {
+       echo "{$pref}は関東地方ではありません。\n";
+   }
 }
 
 // Q10 関数-1
 function hello($name) {
-  echo "$name" . 'こんにちは。' . "\n";
+    return "{$name}さん、こんにちは。\n";
 }
-hello('金谷さん');
-hello('安藤さん');
+
+echo hello("金谷") ;
+echo hello("安藤") ;
 
 // Q11 関数-2
 function calcTaxInPrice($price) {
